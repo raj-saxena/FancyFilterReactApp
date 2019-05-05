@@ -1,10 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
-interface User {
-    id: string
-    display_name: string
-}
+import { User } from './types';
+import Card from './Card';
 
 interface HomeState {
     users: Array<User>
@@ -26,7 +23,7 @@ class Home extends React.Component<{}, HomeState> {
             return <p>Fetching users</p>
         }
 
-        const names = users.map((i: User) => <li key={i.id}>{i.display_name}</li>)
+        const names = users.map((i: User) => <Card key={i.id} user={i} />)
 
         return (
             <div>
